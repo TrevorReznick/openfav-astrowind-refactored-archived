@@ -5,7 +5,7 @@ import configBuilder from './configBuilder'
 import loadConfig from './loadConfig'
 
 export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
-    let cfg;
+    let cfg
     return {
       name: 'openfav-integration',
   
@@ -19,13 +19,13 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
           updateConfig,
           addWatchFile,
         }) => {
-          const buildLogger = logger.fork('openfav');
+          const buildLogger = logger.fork('openfav')
   
-          const virtualModuleId = 'openfav:config';
-          const resolvedVirtualModuleId = '\0' + virtualModuleId;
+          const virtualModuleId = 'openfav:config'
+          const resolvedVirtualModuleId = '\0' + virtualModuleId
   
-          const rawJsonConfig = await loadConfig(_themeConfig);
-          const { SITE, METADATA, ANALYTICS } = configBuilder(rawJsonConfig);
+          const rawJsonConfig = await loadConfig(_themeConfig)
+          const { SITE, METADATA, ANALYTICS } = configBuilder(rawJsonConfig)
   
           updateConfig({
             site: SITE.site,
@@ -39,16 +39,16 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
                   name: 'vite-plugin-openfav-config',
                   resolveId(id) {
                     if (id === virtualModuleId) {
-                      return resolvedVirtualModuleId;
+                      return resolvedVirtualModuleId
                     }
                   },
                   load(id) {
                     if (id === resolvedVirtualModuleId) {
                       return `
-                      export const SITE = ${JSON.stringify(SITE)};
-                      export const METADATA = ${JSON.stringify(METADATA)};                      
-                      export const ANALYTICS = ${JSON.stringify(ANALYTICS)};
-                      `;
+                      export const SITE = ${JSON.stringify(SITE)}
+                      export const METADATA = ${JSON.stringify(METADATA)}                      
+                      export const ANALYTICS = ${JSON.stringify(ANALYTICS)}
+                      `
                     }
                   }
                 }
@@ -57,49 +57,49 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
           })
   
           if (typeof _themeConfig === 'string') {
-            addWatchFile(new URL(_themeConfig, config.root));
+            addWatchFile(new URL(_themeConfig, config.root))
   
-            buildLogger.info(`openfav \`${_themeConfig}\` has been loaded.`);
+            buildLogger.info(`openfav \`${_themeConfig}\` has been loaded.`)
           } else {
-            buildLogger.info(`openfav config has been loaded.`);
+            buildLogger.info(`openfav config has been loaded.`)
           }
         },
         'astro:config:done': async ({ config }) => {
-          cfg = config;
+          cfg = config
         },
   
         'astro:build:done': async ({ logger }) => {
-          const buildLogger = logger.fork('openfav');
-          buildLogger.info('Updating `robots.txt` with `sitemap-index.xml` ...');
+          const buildLogger = logger.fork('openfav')
+          buildLogger.info('Updating `robots.txt` with `sitemap-index.xml` ...')
   
           try {
-            const outDir = cfg.outDir;
-            const publicDir = cfg.publicDir;
-            const sitemapName = 'sitemap-index.xml';
-            const sitemapFile = new URL(sitemapName, outDir);
-            const robotsTxtFile = new URL('robots.txt', publicDir);
-            const robotsTxtFileInOut = new URL('robots.txt', outDir);
+            const outDir = cfg.outDir
+            const publicDir = cfg.publicDir
+            const sitemapName = 'sitemap-index.xml'
+            const sitemapFile = new URL(sitemapName, outDir)
+            const robotsTxtFile = new URL('robots.txt', publicDir)
+            const robotsTxtFileInOut = new URL('robots.txt', outDir)
   
             const hasIntegration =
               Array.isArray(cfg?.integrations) &&
-              cfg.integrations?.find((e) => e?.name === '@astrojs/sitemap') !== undefined;
-            const sitemapExists = fs.existsSync(sitemapFile);
+              cfg.integrations?.find((e) => e?.name === '@astrojs/sitemap') !== undefined
+            const sitemapExists = fs.existsSync(sitemapFile)
   
             if (hasIntegration && sitemapExists) {
-              const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flag: 'a+' });
-              const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
-              const pattern = /^Sitemap:(.*)$/m;
+              const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flag: 'a+' })
+              const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)))
+              const pattern = /^Sitemap:(.*)$/m
   
               if (!pattern.test(robotsTxt)) {
                 fs.appendFileSync(robotsTxtFileInOut, `${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
                   encoding: 'utf8',
                   flag: 'w',
-                });
+                })
               } else {
                 fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
                   encoding: 'utf8',
                   flag: 'w',
-                });
+                })
               }
             }
           } catch (err) {
