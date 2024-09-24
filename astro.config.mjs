@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
+import vercel from '@astrojs/vercel/serverless'
 import tailwind from '@astrojs/tailwind'
 import openfav from './src/integrations/index'
 
@@ -9,6 +10,7 @@ import openfav from './src/integrations/index'
 export default defineConfig({
     site: 'https://example.com',
 	output: 'server',
+	adapter: vercel(),
     integrations: [
 		mdx(), 
 		sitemap(), 
