@@ -1,8 +1,8 @@
 import fs from 'node:fs'
 import os from 'node:os'
 
-import configBuilder from './configBuilder'
-import loadConfig from './loadConfig'
+import configBuilder from './files/configBuilder'
+import loadConfig from './files/loadConfig'
 
 export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
     let cfg
