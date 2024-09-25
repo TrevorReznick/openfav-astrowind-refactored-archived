@@ -1,6 +1,6 @@
 import { mergeDeepRight, pathOr } from 'ramda'
 
-import type { MetaData } from '../../types'
+import type { MetaData } from '../../../src/types'
 
 export type Config = {
   site?: SiteConfig
