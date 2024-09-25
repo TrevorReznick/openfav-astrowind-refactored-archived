@@ -1,9 +1,23 @@
 ---
+
+import { I18N } from 'openfav:config'
+
 import Favicons from '../components/common/Favicons.astro'
 import CustomStyles from '../components/common/CustomStyles.astro'
 import Metadata from '../components/common/Metadata.astro'
 import SiteVerification from '../components/common/SiteVerification.astro'
 import Analytics from '../components/common/Analytics.astro'
+
+import { ViewTransitions } from 'astro:transitions'
+import BasicScripts from '../components/common/BasicScripts.astro'
+
+import type { MetaData as MetaDataType } from '../types'
+
+export interface Props {
+  metadata?: MetaDataType
+}
+
+
 ---
 <!doctype html>
 <html class="2xl:text-[20px]">

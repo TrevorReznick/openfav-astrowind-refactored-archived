@@ -2,7 +2,7 @@ import { mergeDeepRight, pathOr } from 'ramda'
 
 import type { MetaData } from '../../types'
 
-type Config = {
+export type Config = {
   site?: SiteConfig
   metadata?: MetaDataConfig
   i18n?: I18NConfig    
@@ -17,6 +17,7 @@ export interface SiteConfig {
   trailingSlash?: boolean
   googleSiteVerificationId?: string
 }
+
 export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   title?: {
     default: string
@@ -65,7 +66,7 @@ const getI18N = (config: Config) => {
 
   const value = mergeDeepRight({}, _default, config?.i18n ?? {})
 
-  return value as I18NConfig;
+  return value as I18NConfig
 };
 
 const getMetadata = (config: Config) => {
