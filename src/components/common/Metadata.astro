@@ -1,14 +1,14 @@
 ---
-import merge from 'lodash.merge';
+import { mergeDeepRight, pathOr } from 'ramda'
 import { AstroSeo } from '@astrolib/seo';
 
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
-import { SITE, METADATA, I18N } from 'openfav:config';
-import type { MetaData } from '~/types';
-import { getCanonical } from '~/utils/permalinks';
+import { SITE, METADATA, I18N } from 'openfav:config'
+import type { MetaData } from '~/types'
+import { getCanonical } from '~/scripts/utils/permalinks'
 
-import { adaptOpenGraphImages } from '~/utils/images';
+import { adaptOpenGraphImages } from '~/scripts/utils/images'
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -24,7 +24,7 @@ const {
   twitter = {},
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
+const seoProps: AstroSeoProps = mergeDeepRight(
   {
     title: '',
     titleTemplate: '%s',
