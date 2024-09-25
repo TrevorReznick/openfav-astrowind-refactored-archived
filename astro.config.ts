@@ -12,7 +12,7 @@ import openfav from './vendor/integrations'
 
 import type { AstroIntegration } from 'astro'
 
-import partytown from '@astrojs/partytown';
+import partytown from '@astrojs/partytown'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
