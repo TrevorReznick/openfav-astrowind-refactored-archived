@@ -8,9 +8,11 @@ import icon from 'astro-icon'
 import sitemap from '@astrojs/sitemap'
 import vercel from '@astrojs/vercel/serverless'
 import tailwind from '@astrojs/tailwind'
-import openfav from './src/integrations/index'
+import openfav from './vendor/integrations'
 
-import type { AstroConfig, AstroIntegration } from 'astro'
+import type { AstroIntegration } from 'astro'
+
+import partytown from '@astrojs/partytown';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -22,37 +24,44 @@ const whenExternalScripts = (
 // https://astro.build/config
 export default defineConfig({
     site: 'https://example.com',
-	output: 'server',
-	adapter: vercel(),
+    output: 'server',
+    adapter: vercel(),
     integrations: [
 		mdx(), 
 		sitemap(), 
 		tailwind({
-			applyBaseStyles: false,
-		}),
+        	applyBaseStyles: false,
+		}), 
 		icon({
 			include: {
-			  tabler: ['*'],
-			  'flat-color-icons': [
-				'template',
-				'gallery',
-				'approval',
-				'document',
-				'advertising',
-				'currency-exchange',
-				'voice-presentation',
-				'business-contact',
-				'database',
-			  ],
+				tabler: ['*'],
+				'flat-color-icons': [
+					'template',
+					'gallery',
+					'approval',
+					'document',
+					'advertising',
+					'currency-exchange',
+					'voice-presentation',
+					'business-contact',
+					'database',
+				]
 			},
-		}),
+		}), 
 		openfav({
 			config: './src/config.yaml',
-		}),
-        ...whenExternalScripts(() =>
-            partytown({
-              config: { forward: ['dataLayer.push'] },
-            })
-        ),
-	]
+		}), 
+		...whenExternalScripts(() =>
+			partytown({
+				config: { forward: ['dataLayer.push'] },
+			})
+		)
+	],
+	vite: {
+		resolve: {
+		  alias: {
+			'~': path.resolve(__dirname, './src'),
+		  },
+		},
+	}
 })
