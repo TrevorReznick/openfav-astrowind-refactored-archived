@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
+import icon from 'astro-icon'
 import sitemap from '@astrojs/sitemap'
 import vercel from '@astrojs/vercel/serverless'
 import tailwind from '@astrojs/tailwind'
@@ -14,7 +15,25 @@ export default defineConfig({
     integrations: [
 		mdx(), 
 		sitemap(), 
-		tailwind(),
+		tailwind({
+			applyBaseStyles: false,
+		}),
+		icon({
+			include: {
+			  tabler: ['*'],
+			  'flat-color-icons': [
+				'template',
+				'gallery',
+				'approval',
+				'document',
+				'advertising',
+				'currency-exchange',
+				'voice-presentation',
+				'business-contact',
+				'database',
+			  ],
+			},
+		}),
 		openfav({
 			config: './src/config.yaml',
 		})
