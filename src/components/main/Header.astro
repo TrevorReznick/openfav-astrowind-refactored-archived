@@ -38,7 +38,8 @@ export interface Props {
   position?: string;
 }
 
-const {  
+const {
+  username = 'vincenzo',
   id = 'header',
   links = [],
   actions = [],
@@ -51,11 +52,6 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
-
-let {username} = Astro.props
-
-username = 'vincenzo navarra'
-
 ---
 
 <header
