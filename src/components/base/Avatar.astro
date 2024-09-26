@@ -1,0 +1,34 @@
+---
+// UserAvatar.astro
+const { username } = Astro.props
+
+function getInitials(name) {
+  const initials = name
+    .substring(0, 2) // Prendi solo le prime due lettere
+    .toUpperCase(); // Trasforma in maiuscolo
+  return initials
+}
+
+const initials = getInitials(username)
+---
+
+<div class="avatar">
+  {initials}
+</div>
+
+<style>
+  .avatar {
+    width: 40px;
+    height: 40px;
+    margin-left: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+</style>

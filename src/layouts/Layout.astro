@@ -1,30 +1,45 @@
 ---
 import { I18N } from 'openfav:config'
 
-import Favicons from '../components/common/Favicons.astro'
+
+
+import Favicons from '../components/base/Favicons.astro'
 import CustomStyles from '../components/common/CustomStyles.astro'
 import Metadata from '../components/common/Metadata.astro'
 import SiteVerification from '../components/common/SiteVerification.astro'
 import Analytics from '../components/common/Analytics.astro'
-
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro'
 import { ViewTransitions } from 'astro:transitions'
 import BasicScripts from '../components/common/BasicScripts.astro'
+import CommonMeta from '~/components/common/CommonMeta.astro'
 
 import type { MetaData as MetaDataType } from '../types'
 
 export interface Props {
-  metadata?: MetaDataType
+  metadata?: MetaDataType;
 }
+
+const { metadata = {} } = Astro.props
+const { language, textDirection } = I18N
 
 
 ---
 <!doctype html>
-<html class="2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
-    
-  </head>
+    <CommonMeta />
+    <Favicons />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <Analytics />
 
+    <!-- Comment the line below to disable View Transitions -->
+    <ViewTransitions fallback="swap" />
+  </head>
   <body class="antialiased text-default bg-page tracking-tight">
-    <slot />    
+    <slot />
+    <BasicScripts />
   </body>
 </html>
