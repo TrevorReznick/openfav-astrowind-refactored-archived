@@ -52,7 +52,9 @@ const {
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
 
-const username  = 'vincenzo navarra'
+let {username} = Astro.props
+
+username = 'vincenzo navarra'
 
 ---
 
