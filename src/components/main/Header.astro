@@ -50,8 +50,7 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
-const { email, user_name } = Astro.locals
-const username = user_name? user_name: 'default'
+
 ---
 
 <header
