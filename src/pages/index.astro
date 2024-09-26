@@ -11,38 +11,55 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>  
-    <Hero
-      tagline="Dashboard"
-      actions={[
-        {
-          variant: 'primary',
-          target: '_blank',
-          text: 'Get templates',
-          href: 'https://github.com/onwidget/astrowind',
-          icon: 'tabler:download',
-        },
-        { text: 'Learn more', href: '#features' },
-      ]}
-    >
-      <Fragment slot="title">
-        Scale Your Production with Confidence: <span class="text-accent dark:text-white highlight">OpenFavs</span> -
-        The Flexible Resource & Workflow Platform      
-      </Fragment>
-  
-      <Fragment slot="subtitle">  
-        Classify, Improve, and Optimize Your <span class="font-semibold">Workflow</span> with One Powerful Tool      
-      </Fragment>
-  
-      <!--
-      <Fragment slot="image">
-        <YouTube id="gxBkghlglTg" title="Astro just Launched.... Could it be the ultimate web framework?" />
-        <style is:inline>
-          lite-youtube {
-            margin: 0 auto;
-            max-width: 100%;
-          }
-        </style>
-      </Fragment>
-       -->
-    </Hero>
+  <Hero
+    tagline="Welcome"
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get templates',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
+  >
+    <Fragment slot="title">
+      Scale Your Production with Confidence: <span class="text-accent dark:text-white highlight">OpenFavs</span> -
+      The Flexible Resource & Workflow Platform      
+    </Fragment>
+    <Fragment slot="subtitle">  
+      Classify, Improve, and Optimize Your <span class="font-semibold">Workflow</span> with One Powerful Tool      
+    </Fragment>
+    <!--
+    <Fragment slot="image">
+      <YouTube id="gxBkghlglTg" title="Astro just Launched.... Could it be the ultimate web framework?" />
+      <style is:inline>
+        lite-youtube {
+          margin: 0 auto;
+          max-width: 100%;
+        }
+      </style>
+    </Fragment>
+    -->
+  </Hero>
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get templates',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">Be a part of our vision</Fragment>
+
+    <Fragment slot="subtitle">
+      Discover a dynamic work environment, unparalleled growth opportunities, and the chance to make a meaningful
+      impact.
+    </Fragment>
+  </CallToAction>
+</Layout>
 
