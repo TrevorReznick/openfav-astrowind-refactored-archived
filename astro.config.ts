@@ -30,7 +30,7 @@ export default defineConfig({
 		mdx(), 
 		sitemap(), 
 		tailwind({
-        	applyBaseStyles: false,
+        	applyBaseStyles: true,
 		}), 
 		icon({
 			include: {
@@ -62,6 +62,6 @@ export default defineConfig({
 		  alias: {
 			'~': path.resolve(__dirname, './src'),
 		  },
-		},
+		}
 	}
 })
