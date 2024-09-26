@@ -26,6 +26,7 @@ interface MenuLink extends Link {
 }
 
 export interface Props {
+  username: string
   id?: string;
   links?: Array<MenuLink>;
   actions?: Array<ActionLink>;
@@ -37,7 +38,7 @@ export interface Props {
   position?: string;
 }
 
-const {
+const {  
   id = 'header',
   links = [],
   actions = [],
@@ -50,6 +51,8 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
+
+const username  = 'vincenzo navarra'
 
 ---
 
