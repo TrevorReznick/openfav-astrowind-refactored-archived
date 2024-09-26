@@ -1,5 +1,5 @@
-import { SITE, APP_BLOG } from 'astrowind:config' // Importa le configurazioni per il sito e il blog
-import { trim } from '~/utils/utils'
+import { SITE } from 'openfav:config' // Importa le configurazioni per il sito e il blog
+import { trim } from '~/scripts/utils/utils'
 import slugify from 'limax' // Importa la libreria 'slugify' per trasformare stringhe in slug leggibili
 
 /**
