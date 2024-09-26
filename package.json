@@ -24,6 +24,8 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.6",
     "@iconify-json/tabler": "^1.2.3",
+    "@sentry/astro": "^8.32.0",
+    "@spotlightjs/astro": "^2.1.9",
     "astro": "^4.15.9",
     "astro-icon": "^1.1.1",
     "astro-seo": "^0.8.4",

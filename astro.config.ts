@@ -14,6 +14,9 @@ import type { AstroIntegration } from 'astro'
 
 import partytown from '@astrojs/partytown'
 
+import sentry from '@sentry/astro';
+import spotlightjs from '@spotlightjs/astro';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false
@@ -30,8 +33,8 @@ export default defineConfig({
 		mdx(), 
 		sitemap(), 
 		tailwind({
-        	applyBaseStyles: true,
-		}), 
+			applyBaseStyles: true,
+			}), 
 		icon({
 			include: {
 				tabler: ['*'],
@@ -49,19 +52,21 @@ export default defineConfig({
 			},
 		}), 
 		openfav({
-			config: './src/config.yaml',
+        	config: './src/config.yaml',
 		}), 
 		...whenExternalScripts(() =>
-			partytown({
-				config: { forward: ['dataLayer.push'] },
-			})
-		)
+        	partytown({
+            	config: { forward: ['dataLayer.push'] },
+        	})
+		), 
+		sentry(), 
+		spotlightjs()
 	],
-	vite: {
-		resolve: {
-		  alias: {
-			'~': path.resolve(__dirname, './src'),
-		  },
-		}
-	}
+    vite: {
+        resolve: {
+          alias: {
+            '~': path.resolve(__dirname, './src'),
+          },
+        }
+    }
 })
