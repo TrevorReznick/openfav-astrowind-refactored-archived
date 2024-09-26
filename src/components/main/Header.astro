@@ -25,8 +25,7 @@ interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
 
-export interface Props {
-  username: string
+export interface Props {  
   id?: string;
   links?: Array<MenuLink>;
   actions?: Array<ActionLink>;
@@ -38,8 +37,7 @@ export interface Props {
   position?: string;
 }
 
-const {
-  username = 'vincenzo',
+const {  
   id = 'header',
   links = [],
   actions = [],
@@ -49,7 +47,9 @@ const {
   showToggleTheme = false,
   showRssFeed = false,
   position = 'center',
-} = Astro.props;
+} = Astro.props
+
+
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
 ---
@@ -165,7 +165,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
             ''
           )
         }
-        <Avatar username={username} />
+        <Avatar username="vincenzo" />
       </div>
     </div>
   </div>
