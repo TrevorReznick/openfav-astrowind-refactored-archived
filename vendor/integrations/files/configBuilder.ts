@@ -49,7 +49,7 @@ const DEFAULT_SITE_NAME = 'Website'
 const getSite = (config: Config) => {
   const _default = {
     name: DEFAULT_SITE_NAME,
-    site: undefined,
+    site: 'https://openfav-flowbite-git-of-41-double-facessss-projects.vercel.app/',
     base: '/',
     trailingSlash: false,  
     googleSiteVerificationId: ''
