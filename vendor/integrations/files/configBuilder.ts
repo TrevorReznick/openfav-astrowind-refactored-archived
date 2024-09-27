@@ -44,12 +44,12 @@ export interface UIConfig {
   theme: string
 }
 
-const DEFAULT_SITE_NAME = 'Website'
+const DEFAULT_SITE_NAME = 'Openfav'
 
 const getSite = (config: Config) => {
   const _default = {
     name: DEFAULT_SITE_NAME,
-    site: 'https://openfav-flowbite-git-of-41-double-facessss-projects.vercel.app/',
+    site: 'https://openfav.vercel.app/',
     base: '/',
     trailingSlash: false,  
     googleSiteVerificationId: ''
