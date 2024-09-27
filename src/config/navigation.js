@@ -4,65 +4,26 @@ export const headerData = {
   links: [
     {
       text: 'Home',      
-      href: getPermalink('/homes/saas'),
+      href: getPermalink('/'),    
     },
     {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      text: 'Dashboard',      
+      href: getPermalink('/dashboard'),    
     },
     {
-      text: 'About',      
+      text: 'Services',      
+      href: getPermalink('/how-it-works'),
+    },
+    {
+      text: 'Blog',      
       href: getPermalink('/about'),
     },
     {
       text: 'About',      
       href: getPermalink('/about'),
-    },
-    {
-      text: 'Company',      
-      href: getPermalink('/homes/saas'),
-    },
-    {
-      text: 'Production',
-      href: 'https://bookmarks-list.netlify.app/',
-    },
-    /*
-    {
-      text: 'Login',      
-      href: getPermalink('/login/signin'),
-    },
-    */    
+    }
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Login', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData = {
