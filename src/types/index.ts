@@ -1,4 +1,5 @@
-import type { HTMLAttributes} from 'astro/types'
+import type { HTMLAttributes } from 'astro/types'
+
 
 /* @@ Metadata @@ */
 
@@ -63,19 +64,19 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
 export interface Image {
     src: string;
     alt?: string;
-  }
+}
   
   export interface Video {
     src: string;
     type?: string;
-  }
+}
   
-  export interface Widget {
+export interface Widget {
     id?: string;
     isDark?: boolean;
     bg?: string;
     classes?: Record<string, string | Record<string, string>>;
-  }
+ }
 
 export interface Headline {
     title?: string;
@@ -92,7 +93,36 @@ export interface Item {
     callToAction?: CallToAction
     image?: Image
     link: string
-  }
+}
+
+export interface HTMLInputTypeAttribute extends Omit<HTMLAttributes<'input'>, 'type'> {
+    type?: 
+        'button' 
+        | 'text' 
+        | 'password' 
+        | 'number' 
+        | 'checkbox' 
+        | 'color' 
+        | 'date' 
+        | 'datetime-local' 
+        | 'email' 
+        | 'file' | 'hidden' 
+        | 'image' 
+        | 'month' 
+        | 'number'
+        | 'password'
+        | 'radio'
+        | 'range'
+        | 'reset'
+        | 'search'
+        | 'submit'
+        | 'tel'
+        | 'text'
+        | 'time'
+        | 'url'
+        | 'week'
+
+}
 
 export interface Input {
     type: HTMLInputTypeAttribute;
@@ -120,7 +150,7 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   text?: string;
   icon?: string;
   classes?: Record<string, string>;
-  type?: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
@@ -136,4 +166,4 @@ export interface Features extends Omit<Headline, 'classes'>, Widget {
     isReversed?: boolean;
     isBeforeContent?: boolean;
     isAfterContent?: boolean;
-  }
+}
