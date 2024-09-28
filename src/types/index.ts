@@ -60,12 +60,39 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
     image?: string | unknown;
 }
 
+export interface Image {
+    src: string;
+    alt?: string;
+  }
+  
+  export interface Video {
+    src: string;
+    type?: string;
+  }
+  
+  export interface Widget {
+    id?: string;
+    isDark?: boolean;
+    bg?: string;
+    classes?: Record<string, string | Record<string, string>>;
+  }
+
 export interface Headline {
     title?: string;
     subtitle?: string;
     tagline?: string;
     classes?: Record<string, string>;
 }
+
+export interface Item {
+    title?: string
+    description?: string
+    icon?: string
+    classes?: Record<string, string>
+    callToAction?: CallToAction
+    image?: Image
+    link: string
+  }
 
 export interface Input {
     type: HTMLInputTypeAttribute;
@@ -97,3 +124,16 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface Features extends Omit<Headline, 'classes'>, Widget {
+    image?: string | unknown;
+    video?: Video;
+    items?: Array<Item>;
+    columns?: number;
+    defaultIcon?: string;
+    callToAction1?: CallToAction;
+    callToAction2?: CallToAction;
+    isReversed?: boolean;
+    isBeforeContent?: boolean;
+    isAfterContent?: boolean;
+  }
