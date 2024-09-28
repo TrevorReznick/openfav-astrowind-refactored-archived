@@ -1,6 +1,34 @@
 import type { HTMLAttributes } from 'astro/types'
 
 
+type HTMLInputTypeAttribute = 
+	| 'button'
+	| 'checkbox'
+	| 'color'
+	| 'date'
+	| 'datetime-local'
+	| 'email'
+	| 'file'
+	| 'hidden'
+	| 'image'
+	| 'month'
+	| 'number'
+	| 'password'
+	| 'radio'
+	| 'range'
+	| 'reset'
+	| 'search'
+	| 'submit'
+	| 'tel'
+	| 'text'
+	| 'time'
+	| 'url'
+	| 'week';
+
+
+	
+		
+
 /* @@ Metadata @@ */
 
 export interface MetaData {
@@ -96,8 +124,10 @@ export interface Item {
 }
 
 
+
+
 export interface Input {
-    type: string;
+    type: HTMLInputTypeAttribute;
     name: string;
     label?: string;
     autocomplete?: string;
