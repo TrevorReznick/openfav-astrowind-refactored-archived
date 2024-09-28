@@ -37,6 +37,14 @@ export interface MetaDataTwitter {
     cardType?: string;
 }
 
+export interface Form {
+    inputs?: Array<Input>;
+    textarea?: Textarea;
+    disclaimer?: Disclaimer;
+    button?: string;
+    description?: string;
+}
+
 /* @@ Widgets @@ */
 
 export interface Widget {
@@ -59,6 +67,25 @@ export interface Headline {
     classes?: Record<string, string>;
 }
 
+export interface Input {
+    type: HTMLInputTypeAttribute;
+    name: string;
+    label?: string;
+    autocomplete?: string;
+    placeholder?: string;
+}
+
+export interface Textarea {
+    label?: string;
+    name?: string;
+    placeholder?: string;
+    rows?: number;
+}
+
+export interface Disclaimer {
+    label?: string;
+}
+
 /* @@ Components @@ */
 
 export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
@@ -68,3 +95,5 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   classes?: Record<string, string>;
   type?: 'button' | 'submit' | 'reset';
 }
+
+export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}

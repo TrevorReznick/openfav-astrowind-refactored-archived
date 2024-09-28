@@ -1,4 +1,16 @@
 ---
-/**/
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/common/HeroText.astro'
+
+const metadata = {
+  title: 'Log In',
+};
+
+
+
 ---
-<h1>hello</h1>
+
+<Layout metadata={metadata}> 
+  <HeroText tagline="Log in" />
+</Layout>
+
