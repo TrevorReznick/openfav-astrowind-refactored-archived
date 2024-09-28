@@ -1,32 +1,4 @@
-import type { HTMLAttributes } from 'astro/types'
-
-
-type HTMLInputTypeAttribute = 
-	| 'button'
-	| 'checkbox'
-	| 'color'
-	| 'date'
-	| 'datetime-local'
-	| 'email'
-	| 'file'
-	| 'hidden'
-	| 'image'
-	| 'month'
-	| 'number'
-	| 'password'
-	| 'radio'
-	| 'range'
-	| 'reset'
-	| 'search'
-	| 'submit'
-	| 'tel'
-	| 'text'
-	| 'time'
-	| 'url'
-	| 'week';
-
-
-	
+import type { HTMLAttributes } from 'astro/types'	
 		
 
 /* @@ Metadata @@ */
@@ -124,7 +96,7 @@ export interface Item {
 }
 
 
-
+type HTMLInputTypeAttribute = 	| 'button'	| 'checkbox'	| 'color'	| 'date'	| 'datetime-local'	| 'email'	| 'file'	| 'hidden'	| 'image'	| 'month'	| 'number'	| 'password'	| 'radio'	| 'range'	| 'reset'	| 'search'	| 'submit'	| 'tel'	| 'text'	| 'time'	| 'url'	| 'week';
 
 export interface Input {
     type: HTMLInputTypeAttribute;
@@ -155,6 +127,7 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   type?: 'button' | 'submit' | 'reset'
 }
 
+export interface Login extends Omit<Headline, 'classes'>, Form, Widget {}
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
 
 export interface Features extends Omit<Headline, 'classes'>, Widget {

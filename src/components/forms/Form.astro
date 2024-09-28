@@ -2,7 +2,7 @@
 import type { Form as Props } from '~/types'
 import Button from '~/components/base/Button.astro'
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Sign In', description = '' } = Astro.props
 
 const handleSubmit = async (event) => {
   event.preventDefault();
@@ -37,7 +37,12 @@ const handleSubmit = async (event) => {
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+        ({ 
+          type = 'text', 
+          name, label = '', 
+          autocomplete = 'on', 
+          placeholder = '' 
+        }) =>
           name && (
             <div class="mb-6">
               {label && (

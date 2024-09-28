@@ -2,7 +2,7 @@
 import FormContainer from '~/components/forms/Form.astro'
 import Headline from '~/components/base/Headline.astro'
 import WidgetWrapper from '~/components/common/WidgetWrapper.astro'
-import type { Contact as Props } from '~/types'
+import type { Login as Props } from '~/types'
 
 const {
   title = await Astro.slots.render('title'),
@@ -12,12 +12,12 @@ const {
   disclaimer,
   button,
   description,
-
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props;
+} = Astro.props
+
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>

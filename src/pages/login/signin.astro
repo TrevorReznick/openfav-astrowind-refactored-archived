@@ -1,16 +1,36 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/common/HeroText.astro'
+import Form from '~/components/forms/Form.astro'
 
 const metadata = {
-  title: 'Log In',
-};
-
-
+  title: 'Openfav Signin',
+}
 
 ---
 
 <Layout metadata={metadata}> 
   <HeroText tagline="Log in" />
+  <Form
+    id="form"
+    subtitle="Insert your credentials or connect with belows providers"
+    inputs={[
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+      {
+        type: 'password',
+        name: 'password',
+        label: 'Password',
+      },
+    ]}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+  />
 </Layout>
 
