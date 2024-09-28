@@ -1,14 +1,13 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+import typographyPlugin from '@tailwindcss/typography'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
 		'./node_modules/flowbite/**/*.js'
 	],
-	plugins: [
-		require('flowbite/plugin')
-	],
-	darkMode: 'class',
-  	theme: {
+	theme: {
     	extend: {
       		colors: {
         		primary: 'var(--aw-color-primary)',
@@ -54,6 +53,11 @@ module.exports = {
 				'Noto Color Emoji'
 			]
 		}
-	}
+	},
+	plugins: [
+		typographyPlugin,
+		require('flowbite/plugin')
+	],
+	darkMode: 'class'
 }
 
