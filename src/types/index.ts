@@ -95,37 +95,9 @@ export interface Item {
     link: string
 }
 
-export interface HTMLInputTypeAttribute extends Omit<HTMLAttributes<'input'>, 'type'> {
-    type?: 
-        'button' 
-        | 'text' 
-        | 'password' 
-        | 'number' 
-        | 'checkbox' 
-        | 'color' 
-        | 'date' 
-        | 'datetime-local' 
-        | 'email' 
-        | 'file' | 'hidden' 
-        | 'image' 
-        | 'month' 
-        | 'number'
-        | 'password'
-        | 'radio'
-        | 'range'
-        | 'reset'
-        | 'search'
-        | 'submit'
-        | 'tel'
-        | 'text'
-        | 'time'
-        | 'url'
-        | 'week'
-
-}
 
 export interface Input {
-    type: HTMLInputTypeAttribute;
+    type: string;
     name: string;
     label?: string;
     autocomplete?: string;
