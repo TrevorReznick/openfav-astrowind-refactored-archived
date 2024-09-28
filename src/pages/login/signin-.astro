@@ -1,26 +1,17 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/common/HeroText.astro'
-import ContactUs from '~/components/main/Contact.astro'
-
-/*
-import FormContainer from '~/components/forms/Form.astro'
-import Headline from '~/components/base/Headline.astro'
-import WidgetWrapper from '~/components/common/WidgetWrapper.astro'
-import type { Contact as Props } from '~/types'
-*/
+import Form from '~/components/forms/Form.astro'
 
 const metadata = {
-  title: 'Contact',
-};
+  title: 'Openfav Signin',
+}
+
 ---
 
-<Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
+<Layout metadata={metadata}> 
   <HeroText tagline="Log in" />
-
-  <ContactUs
+  <Form
     id="form"
     subtitle="Insert your credentials or connect with belows providers"
     inputs={[
@@ -40,5 +31,6 @@ const metadata = {
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
     description="Our support team typically responds within 24 business hours."
-  />  
+  />
 </Layout>
+
