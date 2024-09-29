@@ -3,42 +3,36 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/common/HeroText.astro'
 import ContactUs from '~/components/main/Contact.astro'
 
-/*
-import FormContainer from '~/components/forms/Form.astro'
-import Headline from '~/components/base/Headline.astro'
-import WidgetWrapper from '~/components/common/WidgetWrapper.astro'
-import type { Contact as Props } from '~/types'
-*/
-
 const metadata = {
-  title: 'Contact',
+  title: 'Sign In',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
-  <HeroText tagline="Log in" />
-
-  <ContactUs
-    id="form"
-    subtitle="Insert your credentials or connect with belows providers"
-    inputs={[
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-      {
-        type: 'password',
-        name: 'password',
-        label: 'Password',
-      },
-    ]}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />  
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">      
+      <ContactUs
+        id="signin-form"
+        title="Sign in to your account"
+        subtitle="Insert your credentials or connect with below providers"
+        inputs={[
+          {
+            type: 'email',
+            name: 'email',
+            label: 'Email',
+          },
+          {
+            type: 'password',
+            name: 'password',
+            label: 'Password',
+          },
+        ]}
+        disclaimer={{
+          label: 'Remember me',
+        }}
+        button="Sign in"
+        description="Don't have an account yet? Sign up"
+      />
+    </div>
+  </section>
 </Layout>

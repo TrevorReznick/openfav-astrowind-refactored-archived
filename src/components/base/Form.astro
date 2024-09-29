@@ -1,98 +1,43 @@
 ---
-import type { Form as Props } from '~/types';
-import Button from '~/components/base/Button.astro'
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/common/HeroText.astro'
+import ContactUs from '~/components/main/Contact.astro'
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
-
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  const email = formData.get('email');
-  const password = formData.get('password');
-
-  try {
-    const response = await fetch('/api/v2/auth/signin', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const result = await response.json();
-    console.log('Success:', result);
-  } catch (error) {
-    console.error('Error:', error);
-  }
+const metadata = {
+  title: 'Sign In',
 };
 ---
 
-<form
-  action="/api/v2/auth/signin"
-  class="grid grid-cols-1 gap-3 w-full"
-  method="post"
-  enctype="application/x-www-form-urlencoded"
->
-  {
-    inputs &&
-      inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
-          name && (
-            <div class="mb-6">
-              {label && (
-                <label for={name} class="block text-sm font-medium">
-                  {label}
-                </label>
-              )}
-              <input
-                type={type}
-                name={name}
-                id={name}
-                autocomplete={autocomplete}
-                placeholder={placeholder}
-                class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
-              />
-            </div>
-          )
-      )
-  }
-
-  {
-    disclaimer && (
-      <div class="mt-3 flex items-start">
-        <div class="flex mt-0.5">
-          <input
-            id="disclaimer"
-            name="disclaimer"
-            type="checkbox"
-            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
-          />
-        </div>
-        <div class="ml-3">
-          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
-            {disclaimer.label}
-          </label>
-        </div>
-      </div>
-    )
-  }
-
-  {
-    button && (
-      <div class="mt-10 grid">
-        <Button variant="primary" type="submit">
-          {button}
-        </Button>
-      </div>
-    )
-  }
-
-  {
-    description && (
-      <div class="mt-3 text-center">
-        <p class="text-sm text-gray-600 dark:text-gray-400">{description}</p>
-      </div>
-    )
-  }
-</form>
+<Layout metadata={metadata}>
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+        Your Company    
+      </a>
+      <ContactUs
+        id="signin-form"
+        subtitle="Insert your credentials or connect with below providers"
+        inputs={[
+          {
+            type: 'email',
+            name: 'email',
+            label: 'Email',
+            placeholder: 'name@company.com'
+          },
+          {
+            type: 'password',
+            name: 'password',
+            label: 'Password',
+            placeholder: '••••••••'
+          },
+        ]}
+        disclaimer={{
+          label: 'By submitting this form, you agree to our terms and conditions',
+        }}
+        button="Sign in"
+        description="Our support team typically responds within 24 business hours."
+      />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,44 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/common/HeroText.astro'
+import ContactUs from '~/components/main/Contact-new.astro'
+
+/*
+import FormContainer from '~/components/forms/Form.astro'
+import Headline from '~/components/base/Headline.astro'
+import WidgetWrapper from '~/components/common/WidgetWrapper.astro'
+import type { Contact as Props } from '~/types'
+*/
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <HeroText tagline="Log in" />
+
+  <ContactUs
+    id="form"
+    subtitle="Insert your credentials or connect with belows providers"
+    inputs={[
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+      {
+        type: 'password',
+        name: 'password',
+        label: 'Password',
+      },
+    ]}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+  />  
+</Layout>
