@@ -1,4 +1,10 @@
 ---
-/**/
+
+import { userId, isLoggedIn } from '~/scripts/stores'
+
+
 ---
-<h1>hello</h1>
+
+<div>
+    {isLoggedIn.get() ? `Benvenuto, utente ${userId.get()}!` : 'Per favore, accedi.'}
+</div>

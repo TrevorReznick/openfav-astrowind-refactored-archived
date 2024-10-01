@@ -1,6 +1,8 @@
 import { defineMiddleware } from 'astro:middleware'
 import { supabase } from '~/providers/supabase'
 
+import { id, email, user_name } from '~/scripts/stores'
+
 const protectedRoutes = ['/dashboard']
 const redirectRoutes = ['/login/signin', '/login/register']
 
@@ -29,10 +31,12 @@ export const onRequest = defineMiddleware(
         return redirect('/login/signin')
       }
       console.log('auth data', data)
-      locals.email = data.user?.email!
-      locals.id = data.user?.id!
-      const [username, domain] = locals.email.split('@');
-      locals.user_name = username
+      const email_ = data.user?.email ?? '';
+      email.set(email_)
+      id.set(data.user?.id ?? '')
+      const [extractUsername] = email_.split('@');
+      user_name.set(extractUsername ?? '');
+
       cookies.set('sb-access-token', data?.session?.access_token!, {
         sameSite: 'strict',
         path: '/',
