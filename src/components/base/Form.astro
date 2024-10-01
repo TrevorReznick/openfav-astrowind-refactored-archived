@@ -1,17 +1,41 @@
 ---
-import type { Form as Props } from '~/types';
+import type { Form as Props } from '~/types'
 import Button from '~/components/base/Button.astro'
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Log in', description = '' } = Astro.props
+
+const handleSubmit = async (event) => {
+  event.preventDefault()
+  const formData = new FormData(event.target)
+  const email = formData.get('email')
+  const password = formData.get('password')
+
+  try {
+    const response = await fetch('/api/v2/auth/signin', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+
+    const result = await response.json()
+    console.log('Success:', result)
+  } catch (error) {
+    console.error('Error:', error)
+  }
+}
 
 ---
 
 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
   <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
     <form
-      action="#"
-      class="space-y-4 md:space-y-6"
+      action="/api/v1/auth/signin"
+      class="grid grid-cols-1 gap-3 w-full"
       method="post"
+      enctype="application/x-www-form-urlencoded"
     >
       {
         inputs &&
