@@ -1,6 +1,38 @@
 ---
-/* */
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/common/HeroText.astro'
+import Login from '~/components/main/Login.astro'
+
+const metadata = {
+  title: 'Register',
+}
 ---
-<h1>hello
-    
-</h1>
+
+<Layout metadata={metadata}>
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">      
+      <Login
+        id="register-form"
+        title="Sign in to your account"
+        subtitle="Insert your credentials or connect with below providers"
+        inputs={[
+          {
+            type: 'email',
+            name: 'email',
+            label: 'Email',
+          },
+          {
+            type: 'password',
+            name: 'password',
+            label: 'Password',
+          },
+        ]}
+        disclaimer={{
+          label: 'Remember me',
+        }}
+        button="Register"
+        description="Don't have an account yet? Sign up"
+      />
+    </div>
+  </section>
+</Layout>
